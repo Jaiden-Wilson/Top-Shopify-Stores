@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  text-align: center;
+}
+#root {
+  margin: 0;
+  height: 100px;
+  background-color: black;
+}
+.title {
+  margin: 0;
+  color: white;
+}
+#sideMenu {
+  position: absolute;
+  left: 0;
+  top: 100px;
+  height: 90%;
+  width: 20%;
+  margin-left: 0;
+}
+.beamInfo {
+  height: 100%;
+  display: inline-block;
+  width: 100%;
+}
+#shopifyData {
+  position: absolute;
+  top: 150px;
+  left: 350px;
+  display: inline-block;
+  border-width: 1000px;
+}
+#parentContainer {
+}

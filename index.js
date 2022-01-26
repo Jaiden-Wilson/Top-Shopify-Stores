@@ -3,90 +3,70 @@ import ReactDOM from "react-dom";
 import { Menu } from "antd";
 import MenuItem from "antd/lib/menu/MenuItem";
 import "antd/dist/antd.css";
+import { ButtonTracker } from "./pageNav";
+
+//Variable Declarations and Initializations
+var userInput = null,
+  listLength = 5,
+  storeNames = [],
+  selectedRows = [];
+var rowArray = [];
+
 ReactDOM.render(
   <div id="parentContainer">
-    <h1 className="title">Top 100 Shopify Stores</h1>
+    <h1 className="title">Top Shopify Stores</h1>
+    <input type="search" id="searchField" />
+    <button id="searchButton">Search</button>
     <div id="sideMenu">
       <Menu className="beamInfo" mode="inline" theme="dark">
-        <MenuItem key="firstItem">Our Products</MenuItem>
-        <MenuItem key="secondItem">About Us</MenuItem>
-        <MenuItem key="thirdItem">Contact Us</MenuItem>
+        <MenuItem key="firstItem">
+          <a href="https://apps.shopify.com/partners/aftersell">Our Products</a>
+        </MenuItem>
+        <MenuItem key="secondItem">
+          <a href="https://aftersell.com/about">About Us</a>
+        </MenuItem>
+        <MenuItem key="thirdItem">
+          <a href="https://aftersell.com/demo_page">Contact Us</a>
+        </MenuItem>
       </Menu>
     </div>
-    <table cellPadding="30px" id="shopifyData">
-      <thead>
-        <tr>
-          <th>Rank</th>
-          <th>Store</th>
-          <th>Yearly Revenue</th>
-          <th>Country/Region</th>
-          <th>Monthly Traffic</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr height="31" role="button" title="Check the BBC Shop US store">
-          <td>1</td>
-          <td>BBC Shop US</td>
-          <td>-</td>
-          <td>United States</td>
-          <td>416,700,000</td>
-        </tr>
-        <tr height="31" role="button" title="Check the Gymshark ROW store">
-          <td>2</td>
-          <td>Gymshark ROW</td>
-          <td className="xl87" width="232">
-            -
-          </td>
-          <td className="xl86" width="64">
-            United Kingdom
-          </td>
-          <td className="xl88" width="64">
-            22,800,000
-          </td>
-        </tr>
-        <tr height="31" role="button" title="Check the Gymshark UK store">
-          <td>3</td>
-          <td>Gymshark UK</td>
-          <td className="xl87" width="232">
-            -
-          </td>
-          <td className="xl86" width="64">
-            United Kingdom
-          </td>
-          <td className="xl88" width="64">
-            22,800,000
-          </td>
-        </tr>
-        <tr height="31" role="button" title="Check the Gymshark US store">
-          <td>4</td>
-          <td>Gymshark US</td>
-          <td className="xl87" width="232">
-            -
-          </td>
-          <td className="xl86" width="64">
-            United States
-          </td>
-          <td className="xl88" width="64">
-            22,800,000
-          </td>
-        </tr>
-        <tr height="20" role="button" title="Check the JB Hi-Fi store">
-          <td height="20" className="xl84" width="64">
-            5
-          </td>
-          <td>JB Hi-Fi</td>
-          <td className="xl87" width="232">
-            -
-          </td>
-          <td className="xl86" width="64">
-            Australia
-          </td>
-          <td className="xl88" width="64">
-            13,500,000
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div id="tableContainer">
+      <ButtonTracker />
+    </div>
   </div>,
   document.getElementById("root")
 );
+
+for (var i = 0; i < listLength; i++) {
+  storeNames.push(document.getElementsByClassName("Store")[i].innerText);
+  rowArray.push(document.getElementsByClassName("dataRow")[i]);
+}
+//Button Activations
+document
+  .getElementById("searchButton")
+  .addEventListener("click", buttonClicked);
+
+//Button response method
+function buttonClicked() {
+  userInput = document.getElementById("searchField").value;
+  for (var i = 0; i < listLength; i++) {
+    if (contains(userInput, storeNames[i]) === true) {
+      selectedRows.push(i);
+    }
+  }
+
+  document.getElementById("shopifyData").setInnerHTML =
+    rowArray[selectedRows[0]];
+}
+
+function contains(s1, s2) {
+  var contains = false;
+  for (var i = 0; i < s2.length - 1; i++) {
+    for (var j = i + 1; j < s2.length; j++) {
+      if (s1 === s2.slice(i, j)) {
+        contains = true;
+      }
+    }
+  }
+  return contains;
+}

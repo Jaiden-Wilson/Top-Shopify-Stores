@@ -15,21 +15,48 @@ body {
   position: absolute;
   left: 0;
   top: 100px;
-  height: 90%;
-  width: 20%;
+  height: 100%;
+  width: 225px;
   margin-left: 0;
 }
 .beamInfo {
-  height: 100%;
+  height: 600px;
   display: inline-block;
   width: 100%;
 }
 #shopifyData {
   position: absolute;
-  top: 150px;
-  left: 350px;
+  top: 0;
+  left: 0;
   display: inline-block;
   border-width: 1000px;
 }
-#parentContainer {
+#searchField {
+  position: relative;
+  top: 10px;
+}
+#searchButton {
+  position: relative;
+  top: 10px;
+}
+#pageNav {
+  position: relative;
+  margin: auto;
+  top: 565px;
+}
+#Button1 {
+  background-color: #000957ff;
+  color: white;
+}
+#Button2 {
+  background-color: #000957ff;
+  color: white;
+}
+#tableContainer {
+  position: absolute;
+  left: 225px;
+  top: 100px;
+  width: 81%;
+  height: 600px;
+  background-color: #fbffe2;
 }

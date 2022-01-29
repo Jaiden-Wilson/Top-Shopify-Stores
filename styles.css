@@ -15,12 +15,12 @@ body {
   position: absolute;
   left: 0;
   top: 100px;
-  height: 100%;
+  height: 525px;
   width: 225px;
   margin-left: 0;
 }
 .beamInfo {
-  height: 600px;
+  height: 535px;
   display: inline-block;
   width: 100%;
 }
@@ -34,29 +34,45 @@ body {
 #searchField {
   position: relative;
   top: 10px;
+  right: 30px;
 }
 #searchButton {
   position: relative;
-  top: 10px;
+  bottom: 46px;
+
+  right: 25px;
 }
 #pageNav {
   position: relative;
-  margin: auto;
-  top: 565px;
+  right: 125px;
+  top: 477px;
 }
 #Button1 {
-  background-color: #000957ff;
-  color: white;
 }
 #Button2 {
-  background-color: #000957ff;
-  color: white;
 }
 #tableContainer {
   position: absolute;
   left: 225px;
   top: 100px;
   width: 81%;
-  height: 600px;
-  background-color: #fbffe2;
+  height: 500px;
+}
+#dataBase {
+  display: none;
+}
+#filter {
+  position: absolute;
+  right: 50px;
+  top: 35px;
+}
+.applyFilters {
+  position: absolute;
+  right: 50px;
+  top: 70px;
+  width: 112px;
+  visibility: hidden;
+}
+button:hover {
+  color: skyblue;
 }
